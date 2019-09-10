@@ -19,6 +19,20 @@
   color: white;
 }
 
+.App-footer {
+  background-color: #909fbb;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(3px + 2vmin);
+  color: white;
+  position: fixed;
+  bottom: 0;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -30,4 +44,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.main-content {
+  text-align: center;
+}
+
+.main-content .home {
+  background-color: antiquewhite;
+}
+
+.main-content .my-page {
+  background-color: lightgreen;
 }
