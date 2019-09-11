@@ -33,22 +33,6 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      {/*<div>*/}
-      {/*  <p>変わらないはず</p>*/}
-      {/*</div>*/}
-      {
-        window.location.pathname === '/me'
-          ? (
-            <header>
-              mypage header
-            </header>
-          )
-          : (
-            <header>
-              home header
-            </header>
-          )
-      }
       {
         header
           ? parse(header)
