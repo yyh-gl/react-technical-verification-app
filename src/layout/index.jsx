@@ -5,6 +5,7 @@ import parse from 'html-react-parser';
 const Layout = ({ children }) => {
   const [header, setHeader] = useState('');
   const [footer, setFooter] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   const asyncGetHeader = async () => {
     const res = await axios.get('http://localhost:3000/api/v1/header', {});
@@ -16,13 +17,38 @@ const Layout = ({ children }) => {
     setFooter(res.data.footer);
   };
 
+  const asyncGetNavi = async () => {
+    await Promise.all([
+      asyncGetHeader(),
+      asyncGetFooter(),
+    ]);
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    asyncGetHeader();
-    asyncGetFooter();
+    asyncGetNavi()
   }, []);
+
+  if (isLoading) return null;
 
   return (
     <>
+      {/*<div>*/}
+      {/*  <p>変わらないはず</p>*/}
+      {/*</div>*/}
+      {
+        window.location.pathname === '/me'
+          ? (
+            <header>
+              mypage header
+            </header>
+          )
+          : (
+            <header>
+              home header
+            </header>
+          )
+      }
       {
         header
           ? parse(header)
